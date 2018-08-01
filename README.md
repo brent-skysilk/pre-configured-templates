@@ -7,7 +7,7 @@ The no-user-input-required template is created by deploying the untouched Wordpr
 Make it executable and give it root priveleges:
 
 ```
-chmod a+x simple_bash.sh   
+chmod +x simple_bash.sh   
 chmod 777 simple_bash.sh 
 ```
 
