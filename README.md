@@ -1,6 +1,6 @@
 # pre-configured-templates
 
-The goal of these scripts is to skip user input for turnkey linux apps. The script will run on boot, changing the MySQL root password, and the app admin password and email (so far, this has only been tested with the turnkey Wordpress app). It will then remove itself from the list of processes that run on boot, and delete itself entirely. 
+The goal of these scripts is to skip user input for turnkey linux apps. The script will run on boot, changing the MySQL root password, and the app admin password and email and inserting them into a text file for the user to referene (so far, this has only been tested with the turnkey Wordpress app). It will then remove itself from the list of processes that run on boot, and delete itself entirely. 
 
 The no-user-input-required template is created by deploying the untouched Wordpress turnkey app, and completing the setup wizard. Then, place the script in /etc/init.d/
 
