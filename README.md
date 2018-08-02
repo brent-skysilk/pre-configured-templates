@@ -17,5 +17,5 @@ Add script as last thing to run before login
 sudo update-rc.d script.sh defaults
 ```
 
-The container can now be templated and the script will run on first boot. The user can then find their credentials at /usr/creds.txt
+The container can now be templated and the script will run on first boot. The user can then find their credentials at /root/creds.txt
 
