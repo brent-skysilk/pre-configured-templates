@@ -22,17 +22,17 @@ NEW_MYSQL=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 NEW_WP=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
 #create credentials file for user to reference at /usr/creds.txt
-echo "Wordpress Admin Password" > /usr/creds.txt
+echo "Wordpress Admin Password" > /root/creds.txt
 
 #add new wordpress admin password to credentials file
-echo "$NEW_WP" >> /usr/creds.txt
+echo "$NEW_WP" >> /root/creds.txt
 
 #add line break to separate passwords from each other
-echo "" >> /usr/creds.txt
+echo "" >> /root/creds.txt
 
 #add new mysql password to credentials file
-echo "MYSQL Password" >> /usr/creds.txt
-echo "$NEW_MYSQL" >> /usr/creds.txt
+echo "MYSQL Password" >> /root/creds.txt
+echo "$NEW_MYSQL" >> /root/creds.txt
 
 
 #wait for mysql to start
