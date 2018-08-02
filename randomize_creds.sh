@@ -63,8 +63,7 @@ rm /etc/init.d/randomize_creds.sh
 #remove script from update-rc.d
 update-rc.d randomize_creds.sh remove
 
-#delete self
-rm -- "$0"
+
 
 
 
