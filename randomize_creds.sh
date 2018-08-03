@@ -21,18 +21,59 @@ NEW_MYSQL=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 #generate new wordpress admin password
 NEW_WP=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 
-#create credentials file for user to reference at /usr/creds.txt
-echo "Wordpress Admin Password" > /root/creds.txt
+#add SkySilk Wordpress graphic to beginning of file
+GRAPHIC=`cat /var/wp_skysilk_graphic.txt`
+echo "$GRAPHIC" > /root/creds.txt
+
+#add line break
+echo "" >> /root/creds.txt
+#add line break
+echo "" >> /root/creds.txt
+
+#create creds file
+echo "Welcome to Wordpress hosted with SkySilk. " >> /root/creds.txt
+
+#add line break
+echo "" >> /root/creds.txt
+
+#get vps ip and concatenate with Wordpress login path
+IP=$(hostname -i)
+IP+='/wp-admin'
+
+#create ip string and make sure user knows username is admin
+echo "To login to your Wordpress site, enter $IP into a browser and use these credentials:" >> /root/creds.txt
+
+#add line break
+echo "" >> /root/creds.txt
+
+echo "username: admin" >> /root/creds.txt
+
+WP_PW_STRING="password: "
+WP_PW_STRING+="$NEW_WP"
 
 #add new wordpress admin password to credentials file
-echo "$NEW_WP" >> /root/creds.txt
+echo "$WP_PW_STRING" >> /root/creds.txt
 
 #add line break to separate passwords from each other
 echo "" >> /root/creds.txt
 
+
 #add new mysql password to credentials file
 echo "MYSQL Password" >> /root/creds.txt
 echo "$NEW_MYSQL" >> /root/creds.txt
+
+#add line break
+echo "" >> /root/creds.txt
+#add line break
+echo "" >> /root/creds.txt
+
+#closing message to user
+echo "You can also find these credentials at /root/creds.txt. We recommend you change your passwords and delete this file as soon as possible." >> /root/creds.txt
+
+#add line break
+echo "" >> /root/creds.txt
+#add line break
+echo "" >> /root/creds.txt
 
 
 #wait for mysql to start
@@ -56,13 +97,15 @@ quit
 QUERIES
 
 
+#add welcome message to login process
+chmod +x /var/welcome_message.sh
+echo '/var/welcome_message.sh' >>/root/.bashrc
 
 #remove script from init.d
 rm /etc/init.d/randomize_creds.sh
 
 #remove script from update-rc.d
 update-rc.d randomize_creds.sh remove
-
 
 
 
